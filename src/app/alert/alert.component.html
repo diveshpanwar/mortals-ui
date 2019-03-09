@@ -1,0 +1,28 @@
+<h6 class="text-center text-info special-font">
+  Select Timelines
+</h6>
+<hr class="special-hr">
+<form [formGroup]="inpForm">
+  <h6 class="text-info special-font">From</h6>
+  <div class="form-row">
+    <div class="form-group col">
+      <input type="date" name="" id="" class="form-control" formControlName="inpDateFrom">
+    </div>
+    <div class="form-group col">
+      <input type="time" class="form-control" formControlName="inpTimeFrom">
+    </div>
+  </div>
+  <h6 class="text-info special-font">To</h6>
+  <div class="form-row">
+    <div class="form-group col">
+      <input type="date" name="" id="" class="form-control" formControlName="inpDateTo">
+    </div>
+    <div class="form-group col">
+      <input type="time" class="form-control" formControlName="inpTimeTo">
+    </div>
+  </div>
+</form>
+<div class="text-center">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="inpForm.value" [disabled]="!inpForm.valid">Ok</button>
+</div>

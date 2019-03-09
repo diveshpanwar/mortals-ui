@@ -1,0 +1,41 @@
+<div class="container-fluid text-center mt-3" *ngIf="!dataLoaded">
+  <img src="/assets/images/loading.gif" class="rounded ml-auto mr-auto d-block loading-image" alt="loading..." />
+</div>
+
+
+<div class="container-fluid mt-3 mb-6" *ngIf="dataLoaded">
+  <div class="row">
+    <div class="col-10 col-md-10 mr-auto ml-auto">
+      <div class="card">
+        <div mat-card class="card-body">
+          <h6 class="card-title text-info special-font text-center">
+            {{queryParams.topic_name}}
+          </h6>
+          <hr class="special-hr">
+          <div class="card-text">
+            <div class="row">
+              <div class="col font-weight-bold text-right">Type: {{queryParams.type | titlecase}}</div>
+              <div class="col font-weight-bold">{{queryParams.consumer_name ? 'Consumer Name' : 'Producer Name'}}: {{(queryParams.consumer_name | titlecase)  || queryParams.producer_name | titlecase}}</div>
+            </div>
+            <div class="row mt-2">
+              <div class="col text-right">From: {{fromDate | date: 'medium'}}</div>
+              <div class="col">To: {{toDate | date: 'medium'}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12 col-md-10 ml-auto mr-auto" style="overflow: scroll;">
+        <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"  style="overflow: scroll;"></canvas>
+    </div>
+  </div>
+</div>

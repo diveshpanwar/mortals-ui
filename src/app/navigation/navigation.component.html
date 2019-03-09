@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/">
+    <mat-icon>queue</mat-icon> &nbsp;
+    <span class='font-weight-bold special-font bigger-fonts'>{{title}}</span>
+  </button>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm class="special-font">
+    <button mat-button routerLink="/topics" class="bigger-fonts special-font">Topics</button>
+    &nbsp;&nbsp;
+    <button mat-mini-fab color="primary" matTooltip={{settingsInterval}} (click)="openSettings()">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/topics">Topics</button>
+  <button mat-menu-item matTooltip={{settingsInterval}} (click)="openSettings()">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-menu>

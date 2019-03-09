@@ -1,0 +1,26 @@
+<div class="container-fluid mt-3 mb-6">
+  <h4 class="special-font text-center">Topics</h4>
+  <hr class="special-hr" />
+  <div class="row" *ngIf="dataLoaded">
+    <div class="col-8 col-md-3 offset-2 offset-md-1 pointer" *ngFor="let topic of topicData">
+      <mat-card class="mb-1 mt-1">
+        <h6 class="text-center special-font mb-1">
+          {{topic.topic_name}}
+        </h6>
+        <div class="text-center mt-2">
+          <button mat-mini-fab  (click)="handleProducerClick(topic.tp_id, topic.topic_name)" color="primary">
+            <mat-icon matTooltip="producer">arrow_downward</mat-icon>
+          </button>
+          &nbsp;
+          <button mat-mini-fab  (click)="handleConsumerClick(topic.tp_id, topic.topic_name)" color="primary">
+            <mat-icon matTooltip="consumer">arrow_upward</mat-icon>
+          </button>
+
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="text-center" *ngIf="!dataLoaded">
+    <img src="/assets/images/loading.gif" class="rounded mx-auto d-block loading-image" alt="loading..." />
+  </div>
+</div>

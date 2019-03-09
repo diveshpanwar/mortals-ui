@@ -1,0 +1,17 @@
+<h6 class="text-center text-info special-font">
+  Select Timelines
+</h6>
+<hr class="special-hr">
+<form [formGroup]="settingsForm">
+  <h6 class="text-info special-font text-center">Interval : {{settingsForm.get('interval').value}}</h6>
+  <div class="row text-center">
+    <div class="col-8 ml-auto mr-auto">
+      <mat-slider [max]=100 [min]=15 [step]=1 [tickInterval]=10 formControlName="interval">
+      </mat-slider>
+    </div>
+  </div>
+</form>
+<div class="text-center">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="settingsForm.value">Ok</button>
+</div>

@@ -1,0 +1,44 @@
+<div class="container-fluid text-center mt-3" *ngIf="!contentLoaded">
+  <img src="/assets/images/loading.gif" class="rounded ml-auto mr-auto d-block loading-image" alt="loading..." />
+</div>
+
+<div class="mb-6 mt-3" *ngIf="contentLoaded && consumers">
+  <div class="col-10 col-md-8 ml-auto mr-auto mt-1">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title special-font text-center font-weight-bold">
+          {{ topicId}}
+        </h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-10 col-md-8 ml-auto mr-auto mt-1">
+    <div class="card box-shadows">
+      <div class="card-body">
+        <h6 class="card-title text-center font-weight-bold special-font">
+          Consumers
+        </h6>
+        <hr class="special-hr" />
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let consumer of consumers">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="special-font">
+                {{consumer.from.toUpperCase()}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col">Consumption Rate: {{consumer.consumerRate}}</div>
+              <div class="col">Production Rate: {{consumer.producerRate}}</div>
+            </div>
+            <div class="text-center mt-2">
+                <a mat-mini-fab color="primary" routerLink="consumer" matTooltip="Analytics"><mat-icon>bar_chart</mat-icon></a>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+<h5 class="mt-3 mb-6 special-font text-center text-info" *ngIf="contentLoaded && !consumers">
+  No Consumers Available.
+</h5>
